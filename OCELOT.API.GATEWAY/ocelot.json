@@ -1,0 +1,58 @@
+{
+	"Routes": [
+		{
+			"DownstreamPathTemplate": "/{everything}",
+			"UpstreamPathTemplate": "/one/{everything}",
+			"DownstreamScheme": "https",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "localhost",
+					"Port": 7275
+				}
+			],
+			"UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
+			"RateLimitOptions": {
+				"Limit": 5, // Limit requests to 5
+				"Period": "10s", // Per 10 seconds
+				"QueueLimit": 0 // No queue limit
+			}
+		},
+		{
+			"DownstreamPathTemplate": "/{everything}",
+			"UpstreamPathTemplate": "/two/{everything}",
+			"DownstreamScheme": "https",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "localhost",
+					"Port": 7066
+				}
+			],
+			"UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
+			"RateLimitOptions": {
+				"Limit": 2, // Limit requests to 2
+				"Period": "5s", // Per 5 seconds
+				"QueueLimit": 0 // No queue limit
+			}
+		},
+		{
+			"DownstreamPathTemplate": "/{everything}",
+			"UpstreamPathTemplate": "/three/{everything}",
+			"DownstreamScheme": "https",
+			"DownstreamHostAndPorts": [
+				{
+					"Host": "localhost",
+					"Port": 7226
+				}
+			],
+			"UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
+			"RateLimitOptions": {
+				"Limit": 10, // Limit requests to 10
+				"Period": "30s", // Per 30 seconds
+				"QueueLimit": 5 // Queue limit of 5 requests
+			}
+		}
+	],
+	"GlobalConfiguration": {
+		"BaseUrl": "https://localhost:7040"
+	}
+}

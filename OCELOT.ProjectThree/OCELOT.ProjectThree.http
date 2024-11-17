@@ -1,0 +1,6 @@
+@OCELOT.ProjectThree_HostAddress = http://localhost:5241
+
+GET {{OCELOT.ProjectThree_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
